@@ -8,12 +8,15 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
+
 public class BankAccountEntity {
 
     @Id
     @GeneratedValue
     private long accountNumber;
 
-    private int solde;
+    //UserId attached to the account
+    private long user_id;
+    private int accountBalance;
     private Timestamp openingDate;
 }

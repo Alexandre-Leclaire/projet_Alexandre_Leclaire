@@ -25,20 +25,10 @@ public class UserController {
 
     @PostMapping("/clients/{id}")
     UserEntity updateClient(@PathVariable Long id, @RequestBody UserEntity user) { return userService.updateUser(id, user); }
+
+    @PostMapping("/clients/delete/{id}")
+    UserEntity deleteClient(@PathVariable Long id) { return userService.deleteUser(id); }
+
+    //@PostMapping("/clients/payment/")
+    //boolean sendPayment(@RequestBody UserEntity user1, UserEntity user2) { return false; } //TODO
 }
-
-    // Methode Update
-    //@PutMapping("/coffees/{id}")
-
-
-//    List<Coffee> getCoffees() {
-//
-//        // Un factory static method qui permet de créer une liste immuable d'éléments
-//        // Un factory static method est une méthode statique qui retourne une instance de la classe dans laquelle elle est définie.
-//        // Elle est souvent utilisée pour créer des objets de manière plus contrôlée, en encapsulant la logique de création au sein de la classe elle-même.
-//        return List.of(
-//                new Coffee("Granador"),
-//                new Coffee("Espresso"),
-//                new Coffee("Cappuccino")
-//        );
-//    }

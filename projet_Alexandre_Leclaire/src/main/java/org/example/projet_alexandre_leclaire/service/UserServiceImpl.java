@@ -17,7 +17,10 @@ public class UserServiceImpl implements IUserService{
     @PostConstruct
     private void initDb() {
         userRepository.saveAll(
-                List.of(new UserEntity("Alexandre", "Leclaire", "12 Rue Voltaire", "75000", "Paris", "060000000"))
+                List.of(new UserEntity("Alexandre", "Leclaire", "12 Rue Voltaire", "75000", "Paris", "060000000"),
+                        new UserEntity("Lambda", "Test", "12 Rue Voltaire", "75000", "Paris", "060000000"),
+                        new UserEntity("Alpha", "Test", "12 Rue Voltaire", "75000", "Paris", "060000000"),
+                        new UserEntity("Mu", "Test", "12 Rue Voltaire", "75000", "Paris", "060000000"))
         );
     }
     @Override
@@ -26,8 +29,16 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public UserEntity updateUser(long id, UserEntity updated) {
-        return userRepository.save(updated);
+    public UserEntity updateUser(long id, UserEntity updated)
+    {
+        if (userRepository.existsById(id) && updated.getId() == id)
+        {
+            return userRepository.save(updated);
+        }
+        else
+        {
+            return null;
+        }
     }
 
     @Override
@@ -37,7 +48,7 @@ public class UserServiceImpl implements IUserService{
 
     @Override
     public List<UserEntity> getUsers() {
-        return List.of((UserEntity) userRepository.findAll());
+        return userRepository.findAll();
     }
 
     @Override

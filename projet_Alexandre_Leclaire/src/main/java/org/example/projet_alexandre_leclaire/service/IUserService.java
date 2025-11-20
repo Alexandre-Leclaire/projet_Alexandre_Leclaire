@@ -11,8 +11,8 @@ public interface IUserService {
     List<UserEntity> getUsers();
 
     //Methodes d'action
-    public UserEntity saveUser(UserEntity user);
-    public UserEntity updateUser(long id, UserEntity updated);
-    public UserEntity deleteUser(long id);
+    UserEntity saveUser(UserEntity user);
+    UserEntity updateUser(long id, UserEntity updated);
+    UserEntity deleteUser(long id);
 
 }
