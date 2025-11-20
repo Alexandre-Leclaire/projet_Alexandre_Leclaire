@@ -36,6 +36,11 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
+    public List<UserEntity> getUsers() {
+        return List.of((UserEntity) userRepository.findAll());
+    }
+
+    @Override
     public UserEntity deleteUser(long id) {
         return userRepository.deleteById(id);
     }
