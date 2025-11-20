@@ -1,14 +1,16 @@
 package org.example.projet_alexandre_leclaire.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.util.Date;
 
+//Common account entity
 @Entity
-
+@NoArgsConstructor
+@Data
 public class BankAccountEntity {
 
     @Id
@@ -16,7 +18,11 @@ public class BankAccountEntity {
     private long accountNumber;
 
     //UserId attached to the account
-    private long user_id;
-    private int accountBalance;
+    @ManyToOne
+    @JoinColumn(name = "userEntity_id")
+    private UserEntity user;
+
+    private double accountBalance;
     private Timestamp openingDate;
+
 }

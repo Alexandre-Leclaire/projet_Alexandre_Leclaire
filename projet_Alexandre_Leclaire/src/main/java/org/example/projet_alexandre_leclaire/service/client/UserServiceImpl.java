@@ -1,7 +1,8 @@
-package org.example.projet_alexandre_leclaire.service;
+package org.example.projet_alexandre_leclaire.service.client;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.example.projet_alexandre_leclaire.entity.BankAccountEntity;
 import org.example.projet_alexandre_leclaire.entity.UserEntity;
 import org.example.projet_alexandre_leclaire.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -39,6 +40,16 @@ public class UserServiceImpl implements IUserService{
         {
             return null;
         }
+    }
+
+    @Override
+    public List<BankAccountEntity> getUserBankAccounts(Long id) {
+        Optional<UserEntity> client = userRepository.findById(id);
+        if (client.isPresent())
+        {
+            return userRepository.findById(id).get().getBankAccountList();
+        }
+        return null;
     }
 
     @Override

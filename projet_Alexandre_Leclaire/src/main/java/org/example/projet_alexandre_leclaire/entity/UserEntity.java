@@ -3,9 +3,13 @@ package org.example.projet_alexandre_leclaire.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -22,6 +26,9 @@ public class UserEntity {
     private String cityName;
     private String phoneNumber;
 
+    @OneToMany(mappedBy = "user")
+    private List<BankAccountEntity> bankAccountList;
+
     public UserEntity(String firstName, String lastName, String address, String cityCode, String cityName, String phoneNumber)
     {
         this.firstName = firstName;
@@ -30,6 +37,17 @@ public class UserEntity {
         this.cityCode = cityCode;
         this.cityName = cityName;
         this.phoneNumber = phoneNumber;
+        this.bankAccountList = new ArrayList<>();
+    }
+    public UserEntity(String firstName, String lastName, String address, String cityCode, String cityName, String phoneNumber, List<BankAccountEntity> bankAccountList)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.cityCode = cityCode;
+        this.cityName = cityName;
+        this.phoneNumber = phoneNumber;
+        this.bankAccountList = bankAccountList;
     }
 
 }
