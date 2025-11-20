@@ -30,7 +30,7 @@ public class UserController {
     @PostMapping("/clients/{id}")
     UserEntity updateClient(@PathVariable Long id, @RequestBody UserEntity user) { return userService.updateUser(id, user); }
 
-    @PostMapping("/clients/delete/{id}")
+    @DeleteMapping("/clients/delete/{id}")
     UserEntity deleteClient(@PathVariable Long id) { return userService.deleteUser(id); }
 
 }
