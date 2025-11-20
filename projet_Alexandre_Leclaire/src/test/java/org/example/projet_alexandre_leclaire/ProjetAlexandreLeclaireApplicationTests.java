@@ -1,4 +1,4 @@
-package com.example.projet_alexandre_leclaire;
+package org.example.projet_alexandre_leclaire;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
